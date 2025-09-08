@@ -2,6 +2,12 @@
 __pycache__/
 *.py[codz]
 *$py.class
+*.csv
+.DS_Store
+.ipynb_checkpoints/
+__pycache__/
+.env
+.venv/
 
 # C extensions
 *.so
