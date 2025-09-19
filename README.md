@@ -1,73 +1,68 @@
-# Mental Health in Tech — Exploratory Data Analysis (NYC DSA)
+# 🧠 Mental Health in Tech: Exploratory Data Analysis
 
-Exploratory analysis of the OSMI “Mental Health in Tech” survey.  
-The notebook cleans the data, engineers interpretable features (support, stigma, and parity-gap indices), and uses seaborn to visualize relationships with treatment seeking and work interference.
+![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue.svg)
+![Status](https://img.shields.io/badge/status-Completed-brightgreen)
+![License](https://img.shields.io/badge/data-Kaggle-lightgrey)
 
-> **Headline:** Higher perceived employer support is associated with higher treatment rates. Interview comfort and perceived consequences don’t always agree—about ~1/3 say “no interview gap” while still believing consequences are worse for mental health.
-
----
-
-## Contents
-
-- `notebooks/mental_health_in_tech_eda.ipynb` – main analysis
-- (optional) `data/` – put the CSV here (not tracked)
+This project explores data from a 2014 developer survey on mental health in the tech workplace. Using pandas and visualization libraries, it investigates how factors like family history, gender, remote work, and employer support affect mental health experiences in the tech industry.
 
 ---
 
-## Data
+## 🧾 Dataset Overview
 
-- Source: OSMI “Mental Health in Tech” survey on Kaggle  
-  (Download from the dataset page and place the CSV under `data/`.)
+- 📅 **Year**: 2014
+- 🏢 **Industry**: Tech (developers, engineers, IT professionals, etc.)
+- 🧪 **Source**: [Kaggle – Mental Health in Tech Survey](https://www.kaggle.com/datasets/osmi/mental-health-in-tech-survey)
+- 🎯 **Goal**: Understand workplace factors that influence mental health stigma, treatment access, and awareness.
 
-**Note:** This repo does not include the raw CSV. See the Kaggle license/terms.
-
----
-
-## What the notebook does
-
-### Cleaning & recodes
-- **Timestamp** → parsed as `datetime`
-- **Age** → numeric with outlier handling; binned to `<25, 25–34, 35–44, 45+`
-- **Gender** → consolidated to `Man / Woman / Non-binary / GNC / Unknown`
-- **Company size** → ordered categorical (`1–5, 6–25, 26–100, 100–500, 500–1000, 1000+`) and an ordinal score
-- **US vs Non-US** from `Country` (with an `Unknown` bucket)
-- **Supervisor / Coworkers comfort** → ordered categoricals (`No < Some of them < Yes`) and ordinal scores
-
-### Feature engineering
-- **Support score (0–5):** `benefits`, `care_options`, `seek_help`, `anonymity`, `wellness_program`  
-  (`Yes`=1; `No/Don't know/Not sure`=0; normalized variant 0–1 included)
-- **Stigma index:** negative consequence and willingness items (higher = worse stigma)
-- **Parity gaps (−1/0/+1):**
-  - `parity_gap_consequence`: mental vs physical consequences
-  - `parity_gap_interview`: mental vs physical interview comfort
-  - Categorical labels: *Physical safer / No gap / Mental worse*
-- **Outcomes:**
-  - `treat_bin` (0/1) from `treatment`
-  - `work_interfere_sev` (0–3) from `work_interfere`
-
-### Visuals (seaborn)
-- **Support → Treatment** (with 95% CIs), plus **facets by company size**
-- **Support → Work interference** (95% CIs)
-- **Parity gap mismatch heatmaps** (counts & row %) for interview vs consequence
-- **Treatment by age band & gender** (stacked bars)
-- **Comfort group comparisons** (neither / coworkers-only / supervisor-only / both)
+### 🔑 Key Variables:
+- `Age`, `Gender`, `Country`, `Remote work`, `Self-employed`
+- `Family history` of mental illness
+- `Treatment`: Whether they have sought mental health treatment
+- Employer-provided mental health `benefits`, `resources`, `anonymity`, and `leave` policies
+- Perceived **mental vs. physical** health support at work
+- Willingness to disclose to `coworkers`, `supervisors`, or `during interviews`
 
 ---
 
-## Quick results (from this notebook)
+## 📊 Project Highlights
 
-- **Support & treatment:** strong positive association up to mid–high support; plateaus thereafter.  
-- **Support & interference:** weak/flat overall; likely heterogeneous by subgroup.  
-- **Gap mismatch:** ~64% agreement; ~1/3 say *no interview gap* but *worse consequences* for mental health.
-
-> These are **associations**, not causal effects.
+- Cleaned survey responses and corrected gender inconsistencies
+- Visualized patterns across:
+  - Age vs. treatment-seeking behavior
+  - Employer benefits vs. openness to discuss mental health
+  - Remote vs. on-site workers’ mental health interference
+- Explored correlations between company size and perceived stigma
+- Investigated the **perceived consequences of disclosure** in the workplace
 
 ---
 
-## Getting started
+## 🛠 Tech Stack
 
-### Environment
-Python ≥ 3.10  
-Install packages (minimal set):
-```bash
-pip install pandas numpy seaborn matplotlib statsmodels
+- **Language**: Python
+- **Notebook**: Jupyter
+- **Libraries**: `pandas`, `matplotlib`, `seaborn`, `numpy`, `datetime`
+
+---
+
+## 📂 Files
+
+| File | Description |
+|------|-------------|
+| `mental_health_in_tech_EDA.ipynb` | Main notebook with full analysis and visualizations |
+| *(Dataset not included)* | Download via [Kaggle](https://www.kaggle.com/datasets/osmi/mental-health-in-tech-survey) |
+
+---
+
+## 🙋 Author
+
+**Ozkan Gelincik**
+Data Scientist | [LinkedIn](https://www.linkedin.com/in/ozkangelincik)
+
+---
+
+## 📌 Notes
+
+- This is an exploratory data analysis (EDA) project only — no predictive modeling was performed.
+- The dataset is public domain but should be cited if reused.
+- Contributions are welcome if you want to expand this project with modeling or updated datasets.
