@@ -8,6 +8,7 @@ __pycache__/
 __pycache__/
 .env
 .venv/
+clone-1.ipynb
 
 # C extensions
 *.so
