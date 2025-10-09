@@ -1,52 +1,11 @@
-# 🧠 Mental Health in Tech: Exploratory Data Analysis
-
-![Made with Python](https://img.shields.io/badge/Made%20with-Python-blue.svg)
-![Status](https://img.shields.io/badge/status-Completed-brightgreen)
-![License](https://img.shields.io/badge/data-Kaggle-lightgrey)
-
-This project explores data from a 2014 developer survey on mental health in the tech workplace. Using pandas and visualization libraries, it investigates how factors like family history, gender, remote work, and employer support affect mental health experiences in the tech industry.
-
----
-
-## 🧾 Dataset Overview
-
-- 📅 **Year**: 2014
-- 🏢 **Industry**: Tech (developers, engineers, IT professionals, etc.)
-- 🧪 **Source**: [Kaggle – Mental Health in Tech Survey](https://www.kaggle.com/datasets/osmi/mental-health-in-tech-survey)
-- 🎯 **Goal**: Understand workplace factors that influence mental health stigma, treatment access, and awareness.
-
-### 🔑 Key Variables:
-- `Age`, `Gender`, `Country`, `Remote work`, `Self-employed`
-- `Family history` of mental illness
-- `Treatment`: Whether they have sought mental health treatment
-- Employer-provided mental health `benefits`, `resources`, `anonymity`, and `leave` policies
-- Perceived **mental vs. physical** health support at work
-- Willingness to disclose to `coworkers`, `supervisors`, or `during interviews`
-
----
-
-## 📊 Project Highlights
-
-- Cleaned survey responses and corrected gender inconsistencies
-- Visualized patterns across:
-  - Age vs. treatment-seeking behavior
-  - Employer benefits vs. openness to discuss mental health
-  - Remote vs. on-site workers’ mental health interference
-- Explored correlations between company size and perceived stigma
-- Investigated the **perceived consequences of disclosure** in the workplace
-
----
-
-## 🛠 Tech Stack
-
-- **Language**: Python🧠 Mental Health in Tech — Multi-Year OSMI EDA (2014–2023)
+🧠 Mental Health in Tech — Multi-Year OSMI EDA (2014–2023)
 
 Core question
 Do visible, supportive workplace policies (benefits, care options, seek-help resources, anonymity, wellness communications) correlate with a higher likelihood of seeking treatment?
 
 This repo contains a reproducible exploratory analysis of the Open Sourcing Mental Illness (OSMI) tech worker surveys. It harmonizes the 2014 instrument with the 2016–2023 waves so you can compare patterns over time and communicate actionable employer takeaways.
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 🗂️ Dataset Overview
 
@@ -58,7 +17,7 @@ Item  Details
 📄 Files expected  survey.csv (2014) and survey_YYYY.csv for later years (same folder as the notebook)
 📦 Output  osmi_wide_2014_2023.csv — harmonized, analysis-ready table
 
-Discovered files example
+Discovered files example: https://osmhhelp.org/research.html
 
 Year  File
 2014  survey.csv
@@ -72,13 +31,12 @@ Year  File
 2023  survey_2023.csv
 
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 🔑 Key Variables (harmonized)
   • Demographics: age, gender, country, family_history
   • Outcomes: treatment → treat_bin (Yes=1, No=0), work_interfere
-  • Policy pillars (2014 wording; later waves regex-mapped):
-benefits, care_options, seek_help, anonymity
+  • Policy pillars (2014 wording; later waves regex-mapped): benefits, care_options, seek_help, anonymity
   • Wellness communications: wellness_program
   • Derived features:
   • support_score4 = benefits + care_options + seek_help + anonymity (0–4)
@@ -95,7 +53,7 @@ Missing NaN —
 
 Later-year headers are normalized with exact renames when known and regex fallbacks for variants (e.g., “formally discussed … as part of a wellness campaign” → wellness_program; HTML bold/italic in “What country do you work in?” etc.).
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 ✨ Project Highlights
   • ✅ Harmonized eight survey waves to the 2014 instrument (robust header/regex mapping).
@@ -105,7 +63,7 @@ Later-year headers are normalized with exact renames when known and regex fallba
   • ✅ Clear visual story: point plots (with 95% CI), stacked bars, heatmaps, waffles/treemaps, wordclouds.
   • ✅ Light stats & modeling: Welch’s t, pairwise comparisons, logistic regression, and leave-one-out ablation of the support score.
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 📊 Quick Findings (high-level)
   • Policy visibility ↔ treatment: Higher support scores are associated with markedly higher treatment-seeking rates.
@@ -115,7 +73,7 @@ Later-year headers are normalized with exact renames when known and regex fallba
 
 ⚠️ These are associations, not causation. Later waves have smaller N. Results should be interpreted directionally.
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 🧭 Repo Structure
 
@@ -126,27 +84,22 @@ osmi_wide_2014_2023.csv Harmonized, analysis-ready dataset (written by the noteb
 README.md This file
 
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 ⚙️ Tech Stack
   • Language: Python (3.12)
   • Notebook: Jupyter
   • Libraries: pandas, numpy, matplotlib, seaborn, scipy, scikit-learn, pywaffle, squarify, wordcloud
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 ▶️ How to Run
   1.  Download data from OSMI and place the files in the same folder as the notebook:
 survey.csv (2014) and any subset of survey_2016.csv … survey_2023.csv.
-  2.  Install deps:
+  2.  Install deps: pip install pandas numpy matplotlib seaborn scipy scikit-learn pywaffle squarify wordcloud
+  3.  Open mental_health_in_tech_EDA.ipynb and run all cells. You will get osmi_wide_2014_2023.csv plus plots and tables used in the slides.
 
-pip install pandas numpy matplotlib seaborn scipy scikit-learn pywaffle squarify wordcloud
-
-
-  3.  Open mental_health_in_tech_EDA.ipynb and run all cells.
-You will get osmi_wide_2014_2023.csv plus plots and tables used in the slides.
-
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 🧱 Harmonization Details (what the code does)
   • Discovery: Finds survey.csv + survey_*.csv and builds a {year: path} map.
@@ -160,7 +113,7 @@ You will get osmi_wide_2014_2023.csv plus plots and tables used in the slides.
   • Outcome: treat_bin from treatment (yes/no).
   • Country cleanup: Simple synonym normalize (e.g., United States of America → United States).
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 📈 Visuals you’ll see
   • Support → Treatment point plots with 95% CI (overall + faceted by gender/age/company size).
@@ -169,7 +122,7 @@ You will get osmi_wide_2014_2023.csv plus plots and tables used in the slides.
   • Waffle / Treemap snapshots for quick composition views.
   • Wordcloud (gender string cleaning demo).
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 🧪 Methods Cheat-Sheet
   • Welch’s t-test: Compare treatment rate across two groups (e.g., Never/Rarely vs Sometimes/Often in work_interfere_cat_2).
@@ -177,7 +130,7 @@ You will get osmi_wide_2014_2023.csv plus plots and tables used in the slides.
   • Logistic regression: treat_bin ~ support_score + gender + age (+ optional controls)
   • Ablation (leave-one-out): Recompute support score 5 times, each time dropping one policy; compare the slope/marginal effect on treat_bin to quantify each policy’s contribution to the bundle.
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 📎 Files
 
@@ -187,42 +140,16 @@ osmi_wide_2014_2023.csv Harmonized dataset generated by the notebook
 (Raw data not included) Download OSMI CSVs and save locally as noted above
 
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 👩‍💻 Author
 
 Ozkan Gelincik — Data Scientist
-🔗 LinkedIn (optional)
+🔗 LinkedIn www.linkedin.com/in/ozkangelincik
 
-⸻
+⸻⸻⸻⸻⸻⸻⸻⸻⸻⸻
 
 📝 Notes & Ethics
   • This is EDA, not causal inference. Treat relationships as directional, not definitive.
   • Please cite OSMI when using these data; follow their usage guidelines.
   • Contributions welcome—PRs for new visuals, models, or improved harmonization!
-- **Notebook**: Jupyter
-- **Libraries**: `pandas`, `matplotlib`, `seaborn`, `numpy`, `datetime`
-
----
-
-## 📂 Files
-
-| File | Description |
-|------|-------------|
-| `mental_health_in_tech_EDA.ipynb` | Main notebook with full analysis and visualizations |
-| *(Dataset not included)* | Download via [Kaggle](https://www.kaggle.com/datasets/osmi/mental-health-in-tech-survey) |
-
----
-
-## 🙋 Author
-
-**Ozkan Gelincik**
-Data Scientist | [LinkedIn](https://www.linkedin.com/in/ozkangelincik)
-
----
-
-## 📌 Notes
-
-- This is an exploratory data analysis (EDA) project only — no predictive modeling was performed.
-- The dataset is public domain but should be cited if reused.
-- Contributions are welcome if you want to expand this project with modeling or updated datasets.
